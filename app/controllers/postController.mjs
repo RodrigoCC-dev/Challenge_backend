@@ -8,7 +8,6 @@ async function index(req, res) {
 };
 
 async function create(req, res) {
-  //console.log('Se ha solicitado crear un post');
   let post = Post.build({
     name: req.body.name,
     description: req.body.description
@@ -23,8 +22,14 @@ async function create(req, res) {
 };
 
 async function destroy(req, res) {
-  console.log('Se ha solicitado borrar el post ' + req.params.id);
-  res.status(200);
+  let post = await Post.findByPk(req.params.id);
+  try {
+    await post.destroy();
+    res.status(200).json(post);
+  } catch (e) {
+    console.error(e);
+    res.status(422).json({error: 'No fue posible eliminar el post'});
+  }
 };
 
 export { index, create, destroy };
