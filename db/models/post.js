@@ -14,8 +14,22 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Post.init({
-    name: DataTypes.STRING,
-    description: DataTypes.STRING(1234)
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'Este valor no puede estar vacío.'
+        }
+      }
+    },
+    description: {
+      type: DataTypes.STRING(1234),
+      validate: {
+        notEmpty: {
+          msg: 'El post debe tener una descripción.'
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Post',

@@ -14,10 +14,10 @@ async function create(req, res) {
   });
   try {
     await post.save();
-    res.status(200).json(post);
+    res.status(201).json(post);
   } catch (e) {
     console.error(e);
-    res.status(422).json({error: e.msg})
+    res.status(422).json({error: e.msg});
   }
 };
 
