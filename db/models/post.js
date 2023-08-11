@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         notEmpty: {
-          msg: 'Este valor no puede estar vacío.'
+          msg: 'No se ha ingresado el nombre del post.'
         }
       }
     },
