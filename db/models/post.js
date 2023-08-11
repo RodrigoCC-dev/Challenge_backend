@@ -19,6 +19,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Post',
+    scopes: {
+      dataOnly: {
+        attibutes: { exclude: ['createdAt', 'updatedAt']}
+      }
+    }
   });
   return Post;
 };
