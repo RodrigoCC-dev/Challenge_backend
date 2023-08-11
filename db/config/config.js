@@ -26,4 +26,6 @@ const config = {
     port: process.env.PGPORT,
     dialect: 'postgres'
   }
-}
+};
+
+export default config;
