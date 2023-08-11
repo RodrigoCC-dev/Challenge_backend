@@ -3,8 +3,9 @@ import models from '../../db/models/index.js';
 const { Post } = models;
 
 async function index(req, res) {
-  console.log('Se han solicitado todos los posts');
-  res.status(200);
+  //console.log('Se han solicitado todos los posts');
+  const posts = await Post.scope('dataOnly').findAll();
+  res.status(200).json(posts);
 };
 
 async function create(req, res) {
