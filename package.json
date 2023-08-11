@@ -3,12 +3,12 @@
   "version": "0.0.1",
   "description": "",
   "main": "./app/server.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
-    "dev": "nodemon app/server.js",
+    "dev": "nodemon app/server.mjs",
     "test": "echo \"Error: no test specified\" && exit 1",
     "console-dev": "node -r esm --experimental-repl-await console",
-    "server": "cross-env NODE_ENV=production pm2 start ./app/server.js"
+    "server": "cross-env NODE_ENV=production pm2 start ./app/server.mjs"
   },
   "repository": {
     "type": "git",
