@@ -14,34 +14,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Post.init({
-    name: {
-      type: DataTypes.STRING,
-      validate: {
-        notNull: {
-          msg: 'Este valor no puede ser nulo.'
-        },
-        notEmpty: {
-          msg: 'Este valor no puede estar vacío.'
-        }
-      }
-    },
-    description: {
-      type: DataTypes.STRING(1234),
-      validate: {
-        notNull: {
-          msg: 'Este valor no puede ser nulo.'
-        },
-        notEmpty: {
-          msg: 'El post debe tener una descripción.'
-        }
-      }
-    }
+    name: DataTypes.STRING,
+    description: DataTypes.STRING(1234)
   }, {
     sequelize,
     modelName: 'Post',
     scopes: {
       dataOnly: {
-        attibutes: { exclude: ['createdAt', 'updatedAt']}
+        attributes: { exclude: ['createdAt', 'updatedAt']}
       }
     }
   });
