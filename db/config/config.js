@@ -1,7 +1,7 @@
-import fs from 'fs';
-import 'dotenv/config';
+const fs = require('fs');
+require('dotenv').config();
 
-const config = {
+module.exports = {
   development: {
     username: process.env.PGUSER,
     password: process.env.PGPASSWORD,
@@ -27,5 +27,3 @@ const config = {
     dialect: 'postgres'
   }
 };
-
-export default config;

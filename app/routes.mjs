@@ -1,20 +1,18 @@
 import express from 'express';
+import { index, create, destroy } from './controllers/postController.mjs';
 
 const router = express.Router();
 
 router.get('/posts/', (req, res) => {
-  console.log('Se han solicitado todos los posts');
-  res.status(200);
+  index(req, res);
 });
 
 router.post('/posts/', (req, res) => {
-  console.log('Se ha solicitado crear un post');
-  res.status(200);
+  create(req, res);
 });
 
 router.delete('/posts/:id', (req, res) => {
-  console.log('Se ha solicitado borrar el post ' + req.params.id);
-  res.status(200);
+  destroy(req, res);
 });
 
 export default router;

@@ -14,11 +14,30 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Post.init({
-    name: DataTypes.STRING,
-    description: DataTypes.STRING(1234)
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'No se ha ingresado el nombre del post.'
+        }
+      }
+    },
+    description: {
+      type: DataTypes.STRING(1234),
+      validate: {
+        notEmpty: {
+          msg: 'El post debe tener una descripción.'
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Post',
+    scopes: {
+      dataOnly: {
+        attributes: { exclude: ['createdAt', 'updatedAt']}
+      }
+    }
   });
   return Post;
 };
