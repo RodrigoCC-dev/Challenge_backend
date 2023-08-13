@@ -10,7 +10,7 @@ const port = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(cors({ origin: process.env.CORS_ORIGINS }));
+app.use(cors({ origin: process.env.CORS_ORIGINS, optionsSuccessStatus: 200 }));
 
 app.use('/', router);
 
